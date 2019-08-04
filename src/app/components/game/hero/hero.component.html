@@ -1,0 +1,25 @@
+<div class="hero-container">
+  <div class="row">
+    <div class="col-12">
+      <span>{{hero.name}}</span>
+      <span>{{hero.class == 0 ? "Warrior" : "Wizard"}}</span>
+      <span>{{hero.level}}</span>
+      <span>Exp: {{hero.experience}}</span>
+      <span>Gold: {{hero.gold}}</span>
+      <span>Health: {{hero.health}}/{{hero.maxHealth}}</span>
+      <span>Mana: {{hero.mana}}/{{hero.maxMana}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      Inventory<br>
+      <ul>
+        <li *ngFor="let item of hero.inventory; index as i">
+          {{ item.name }} {{ hero.equippedWeapon === i ? "- Equipped" : ""}}
+          <span *ngIf="item.type == 0 && hero.equippedWeapon != i">- Equip</span>
+          <span *ngIf="item.type == 1" (click)="useItem(i)">- Use</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

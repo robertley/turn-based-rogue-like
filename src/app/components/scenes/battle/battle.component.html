@@ -1,0 +1,19 @@
+<div class="scene-container">
+  <div class="enemy-container">
+    <div class="row">
+      <div class="enemy ml-auto mr-auto">
+        <span>{{enemy.name}}</span>
+        <span>{{enemy.level}}</span>
+        <span>Health: {{enemy.health}}/{{enemy.maxHealth}}</span>
+        <!-- <span>Mana: {{enemy.mana}}/{{enemy.maxMana}}</span> -->
+      </div>
+    </div>
+  </div>
+  <div class="action-panel">
+    <div class="row">
+      <div class="col-12">
+        <button class="btn btn-primary" [disabled]="disableAttackButton" (click)="attack()">Attack</button>
+      </div>
+    </div>
+  </div>
+</div>

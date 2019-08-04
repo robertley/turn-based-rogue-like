@@ -1,0 +1,36 @@
+<div class="scene-container">
+  <div class="row">
+    <div class="col-12">
+      <label>Hero Name:</label>
+      <input [(ngModel)]="hero.name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-primary mr-2" (click)="selectClass(0)">Warrior</button>
+      <button class="btn btn-primary" (click)="selectClass(1)">Wizard</button>
+    </div>
+    <div class="col-6 stats">
+      <span>Stat upgrades left: {{addStatLeft}}</span> <br>
+      <span>Vitality: {{hero.stats.vitality}}</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(0)">+</button><br>
+      <span>Strength: {{hero.stats.strength}}</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(1)">+</button><br>
+      <span>Resistence: {{hero.stats.resistence}}</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(2)">+</button><br>
+      <span>Magic Resistence: {{hero.stats.magicResistence}}</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(3)">+</button><br>
+      <span>Intelligence: {{hero.stats.intelligence}}</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(4)">+</button><br>
+      <span>Charisma: {{hero.stats.charisma}}</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(5)">+</button><br>
+      <span>Luck: {{hero.stats.luck}}</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(6)">+</button><br>
+      <span>+{{addGoldAmt}} gold</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(7)">+</button><br>
+    </div>
+    <div class="col-6">
+      Starts With:
+      <ul>
+        <li *ngFor="let item of startsWith; index as i">
+          {{ item.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="action-panel">
+    <button class="btn btn-primary" (click)="begin()">Start</button>
+  </div>
+</div>

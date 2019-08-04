@@ -1,0 +1,22 @@
+<div class="game-container">
+  Floor {{gameService.floor}}
+  <div *ngIf="gameState == 0">
+    <app-start (changeGameState)="changeGameState($event)"></app-start>
+  </div>
+  <div *ngIf="gameState == 1">
+    <app-menu (changeGameState)="changeGameState($event)"></app-menu>
+  </div>
+  <div *ngIf="gameState == 2">
+    <app-battle
+      (changeGameState)="changeGameState($event)"
+      (deadReset)="deadReset($event)">
+    </app-battle>
+  </div>
+  <div *ngIf="gameState == 3">
+    <app-event
+      (changeGameState)="changeGameState($event)"
+      (deadReset)="deadReset($event)">
+    </app-event>
+  </div>
+</div>
+<app-hero></app-hero>

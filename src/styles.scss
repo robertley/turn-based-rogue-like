@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: whitesmoke;
+}
+
+.scene-container {
+    height: 500px;
+    position: relative;
+}
+
+.action-panel {
+    position: absolute;
+    bottom: 0;
+}
