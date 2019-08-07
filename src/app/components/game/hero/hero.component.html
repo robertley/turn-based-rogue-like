@@ -15,9 +15,7 @@
       Inventory<br>
       <ul>
         <li *ngFor="let item of hero.inventory; index as i">
-          {{ item.name }} {{ hero.equippedWeapon === i ? "- Equipped" : ""}}
-          <span *ngIf="item.type == 0 && hero.equippedWeapon != i">- Equip</span>
-          <span *ngIf="item.type == 1" (click)="useItem(i)">- Use</span>
+          <app-item [item]="item" [index]="i"></app-item>
         </li>
       </ul>
     </div>

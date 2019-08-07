@@ -19,7 +19,9 @@ export class MenuComponent implements OnInit {
   
   nextFloor() {
     this.gameService.incrementFloor()
-    if (Math.floor(Math.random() * 5) < 1) { // event
+    let eventOddConst = 1
+    
+    if (Math.floor(Math.random() * eventOddConst) < 1) { // event
       this.changeGameState.emit(3)
     } else {
       this.changeGameState.emit(2)

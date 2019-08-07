@@ -31,6 +31,13 @@ export class HeroService {
       stats: null
     }
     this.setStats(0)
+    
+    
+    // test
+    this.hero.inventory.push(this.itemService.getItem(1000))
+    this.hero.inventory.push(this.itemService.getItem(1001))
+    this.hero.inventory.push(this.itemService.getItem(1002))
+    this.hero.inventory.push(this.itemService.getItem(1003))
   }
   
   setStats(heroClass) { // 18 points per class

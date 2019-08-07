@@ -86,7 +86,7 @@ export class BattleComponent implements OnInit {
   useItem(index) {
     let hero = this.hero
     let item: Item = hero.inventory[index]
-    if (item.type == 1) {
+    if (item.type == "melee") {
       hero.health += item.power
       if (hero.health > hero.maxHealth) {
         hero.health = hero.maxHealth

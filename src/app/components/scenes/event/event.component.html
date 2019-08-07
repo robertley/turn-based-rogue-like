@@ -1,9 +1,14 @@
 <div class="scene-container">
-  event
+  <div class="event-container">
+    <div class="row">
+      <h2>{{ event.title }}</h2>
+      <p>{{ event.description }}</p>
+    </div>
+  </div>
   <div class="action-panel">
     <div class="row">
       <div class="col-12">
-        <button class="btn btn-primary" (click)="continue()">Continue</button>
+        <button *ngFor="let choice of event.choices" class="btn btn-primary" (click)="act(choice.functionKey)">{{ choice.title }}</button>
       </div>
     </div>
   </div>

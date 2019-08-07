@@ -7,6 +7,6 @@ export interface Item {
     // minPower: number;
     // maxPower: number;
     power: number;
-    type: ItemType | number;
+    type: string;
     rarity: number;
 }

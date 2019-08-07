@@ -15,7 +15,7 @@ export class StartComponent implements OnInit {
   
   hero: Hero
   heroClass;
-  addStatLeft = 2
+  addStatLeft = 200
   addGoldAmt = 50
   startsWith: Item[]
 
@@ -45,7 +45,6 @@ export class StartComponent implements OnInit {
         this.hero.inventory = [this.itemService.getItem(1), this.itemService.getItem(2)]
       }
     }
-    this.addStatLeft = 2
   }
   
   increaseStat(stat) {

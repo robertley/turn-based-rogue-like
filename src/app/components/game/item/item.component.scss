@@ -1,0 +1,12 @@
+.item-info-box {
+    position: absolute;
+    padding: 1em;
+    -webkit-box-shadow: -1px -2px 8px 4px rgba(0,0,0,0.18);
+    -moz-box-shadow: -1px -2px 8px 4px rgba(0,0,0,0.18);
+    box-shadow: -1px -2px 8px 4px rgba(0,0,0,0.18);
+    background-color: white;
+    bottom: 30px;
+}
+.item-container {
+    position: relative;
+}

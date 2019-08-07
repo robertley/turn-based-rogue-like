@@ -10,6 +10,8 @@ import { StartComponent } from './components/scenes/start/start.component';
 import { MenuComponent } from './components/scenes/menu/menu.component';
 import { HeroComponent } from './components/game/hero/hero.component';
 import { EventComponent } from './components/scenes/event/event.component';
+import { ItemComponent } from './components/game/item/item.component';
+import { SpellComponent } from './components/game/spell/spell.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { EventComponent } from './components/scenes/event/event.component';
     StartComponent,
     MenuComponent,
     HeroComponent,
-    EventComponent
+    EventComponent,
+    ItemComponent,
+    SpellComponent
   ],
   imports: [
     FormsModule,

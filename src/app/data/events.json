@@ -1,0 +1,54 @@
+[
+  {
+    "key": 1000,
+    "event": {
+      "title": "test event 1",
+      "description": "gain a trait of your choice",
+      "rarity": 1,
+      "choices": [
+        {
+          "title": "Vitality",
+          "functionKey": "plusVitality"
+        },
+        {
+          "title": "Strength",
+          "functionKey": "plusStrength"
+        },
+        {
+          "title": "Resistence",
+          "functionKey": "plusResistence"
+        },
+        {
+          "title": "Magic Resistence",
+          "functionKey": "plusMagicResistence"
+        },
+        {
+          "title": "Intelligence",
+          "functionKey": "plusIntelligence"
+        },
+        {
+          "title": "Charisma",
+          "functionKey": "plusCharisma"
+        },
+        {
+          "title": "Luck",
+          "functionKey": "plusLuck"
+        }
+      ]
+    }
+  },
+  {
+    "key": 1001,
+    "event": {
+      "title": "test event 2",
+      "description": "lose 5 hp. sorry kiddo",
+      "rarity": 1,
+      "choices": [
+        {
+          "title": "Ok",
+          "functionKey": "loseHp5"
+        }
+      ]
+    }
+  }
+]

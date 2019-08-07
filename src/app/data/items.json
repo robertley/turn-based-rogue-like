@@ -1,0 +1,35 @@
+[
+  {
+  "key": 0,
+  "item": {
+    "name": "My First Sword",
+    "description": "You have something to poke things with. Congratulations.",
+    "value": 2,
+    "power": 2,
+    "type": "melee",
+    "rarity": -1
+  }
+  },
+  {
+    "key": 1,
+    "item": {
+      "name": "My First Staff",
+      "description": "It's not the best magic stick, but it's yours.",
+      "value": 2,
+      "power": 5,
+      "type": "staff",
+      "rarity": 1
+    }
+  },
+  {
+    "key": 2,
+    "item": {
+      "name": "Minor Potion of Healing",
+      "description": "Heals 5hp",
+      "value": 2,
+      "power": 5,
+      "type": "consumable",
+      "rarity": 1
+    }
+  }
+]

@@ -8,6 +8,8 @@ import { ItemType } from 'src/app/enums/item-type.enum';
 import { ItemService } from 'src/app/services/item.service';
 import { HeroService } from 'src/app/services/hero.service';
 import { GameService } from 'src/app/services/game.service';
+import { SpellService } from 'src/app/services/spell.service';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-game',
@@ -20,11 +22,18 @@ export class GameComponent implements OnInit {
   gameState: GameState = 0
   floor: number
 
-  constructor(private itemService: ItemService, private heroService: HeroService, private gameService: GameService) { }
+  constructor(
+    private itemService: ItemService,
+    private heroService: HeroService,
+    private gameService: GameService,
+    private spellService: SpellService,
+    private eventService: EventService
+  ) { }
 
   ngOnInit() {
     this.itemService.createItemMap()
     this.heroService.createHero()
+    this.eventService.createEventMap()
     this.floor = this.gameService.floor
   }
   

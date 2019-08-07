@@ -1,0 +1,22 @@
+[
+  {
+    "key": 0,
+    "spell": {
+      "name": "Minor Force",
+      "description": "minor force spell",
+      "power": 2,
+      "cost": 2,
+      "type": "force"
+    }
+  },
+  {
+    "key": 1,
+    "spell": {
+      "name": "Minor Healing",
+      "description": "Heals 8hp",
+      "power": 2,
+      "cost": 4,
+      "type": "healing"
+    }
+  }
+]

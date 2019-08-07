@@ -1,0 +1,14 @@
+<div class="item-container">
+  <div (mouseover)="showInfoBox=true; calculateDamage()" (mouseout)="showInfoBox=false">
+    {{ item.name }} {{ hero.equippedWeapon === index ? "- Equipped" : ""}}
+    <span *ngIf="item.type == 0 && hero.equippedWeapon != index">- Equip</span>
+    <span *ngIf="item.type == 1" (click)="useItem(i)">- Use</span>
+  </div>
+  <div *ngIf="showInfoBox" class="item-info-box">
+    <span class="bold">{{ item.name }}</span> <br>
+    <span>{{ item.description }}</span> <br>
+    <span>Value: {{ item.value }} gold</span> <br>
+    <span>Base Damage: {{ item.power }} </span> <br>
+    <span *ngIf="item.type == 'melee'" >Attack Power: {{ minDamage }} - {{ maxDamage }}</span> <br>
+  </div>
+</div>
