@@ -69,6 +69,8 @@ export class HeroService {
   incrementStat(stat) {
     if (stat == 0) {
       this.hero.stats.vitality++
+      this.hero.health += 4
+      this.hero.maxHealth += 4
     }
     if (stat == 1) {
       this.hero.stats.strength++
@@ -81,6 +83,8 @@ export class HeroService {
     }
     if (stat == 4) {
       this.hero.stats.intelligence++
+      this.hero.mana += 4
+      this.hero.maxMana += 4
     }
     if (stat == 5) {
       this.hero.stats.charisma++
@@ -88,7 +92,6 @@ export class HeroService {
     if (stat == 6) {
       this.hero.stats.luck++
     }
-    this.calcAttributes()
   }
   
   calcAttributes() {
@@ -96,6 +99,8 @@ export class HeroService {
     this.hero.maxHealth = this.hero.stats.vitality * 4
     this.hero.mana = this.hero.stats.intelligence * 4
     this.hero.maxMana = this.hero.stats.intelligence * 4
+    
+    // this.hero.health = 1
   }
   
   getClassString(classNum) {
@@ -105,6 +110,17 @@ export class HeroService {
     if (classNum == 1) {
       return "Wizard"
     }
+  }
+  
+  takeDamage(amt) {
+    this.hero.health -= amt
+    if (this.hero.health <= 0) {
+      this.hero.health = 0
+      alert("You dead")
+      this.resetHero()
+      return true
+    }
+    return false
   }
 
   resetHero() {

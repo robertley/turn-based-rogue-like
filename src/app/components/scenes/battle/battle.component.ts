@@ -20,7 +20,7 @@ export class BattleComponent implements OnInit {
   floor: number
   
   
-  // pipelining
+  // piping
   disableAttackButton = false;
   
   constructor(private heroService: HeroService, private gameService: GameService) { }
@@ -73,11 +73,8 @@ export class BattleComponent implements OnInit {
     let attackPower = 1
     let hero = this.hero
     
-    hero.health -= attackPower
-    if (hero.health < 1) {
-      hero.health = 0
-      alert("You dead")
-      this.heroService.resetHero()
+    let isDead = this.heroService.takeDamage(attackPower)
+    if (isDead) {
       this.gameService.floor = 0
       this.changeGameState.emit(0)
     }

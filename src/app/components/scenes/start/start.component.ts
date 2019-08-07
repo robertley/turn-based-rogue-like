@@ -15,7 +15,7 @@ export class StartComponent implements OnInit {
   
   hero: Hero
   heroClass;
-  addStatLeft = 200
+  addStatLeft = 2
   addGoldAmt = 50
   startsWith: Item[]
 
