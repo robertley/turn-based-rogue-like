@@ -4,6 +4,8 @@ import { Hero } from 'src/app/interfaces/hero.interface';
 import { Item } from 'src/app/interfaces/item.interface';
 import { HeroService } from 'src/app/services/hero.service';
 import { GameService } from 'src/app/services/game.service';
+import { BattleService } from 'src/app/services/battle.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-battle',
@@ -18,78 +20,62 @@ export class BattleComponent implements OnInit {
   hero: Hero
   enemy: Enemy
   floor: number
-  
+  damageDealt: number
+  showDamageDealt = false
+  secondShowDamageDealt = false
   
   // piping
   disableAttackButton = false;
+  subscription: Subscription
   
-  constructor(private heroService: HeroService, private gameService: GameService) { }
+  constructor(private battleService: BattleService, private heroService: HeroService, private gameService: GameService) {
+    this.subscription = this.battleService.enemyDamage.subscribe((amt) => {
+      this.renderEnemyDamage(amt)
+    })
+  }
 
   ngOnInit() {
     this.hero = this.heroService.hero
     this.floor = this.gameService.floor
-    this.createEnemy()
+    this.enemy = this.battleService.createEnemy()
+    this.battleService.toggleBattle()
   }
   
-  createEnemy() {
-    let level = Math.ceil(this.floor / 2)
-    
-    this.enemy = {
-      name: "Red-knee Tarantula",
-      class: "normal",
-      level: level,
-      health: Math.ceil((level * .75) * 5),
-      maxHealth: Math.ceil((level * .75) * 5),
-      power: Math.ceil(level * 1.5),
-      loot: [],
-      gold: Math.ceil((level * .75) * 5)
-    }
-  }
   attack() {
     this.disableAttackButton = true
-    
-    let enemy = this.enemy
-    let hero = this.hero
-    let attackPower = hero.inventory[hero.equippedWeapon].power
-    
-    enemy.health -= attackPower
-    
-    if (enemy.health < 1) {
-      enemy.health = 0
+    if (this.battleService.attack()) {
+      this.battleService.toggleBattle()
       setTimeout(() => {
-        let exp = enemy.level * 2
-        hero.gold += enemy.gold
-        hero.experience += exp
-        alert(`You defeated ${enemy.name} \nYou found ${enemy.gold} gold!\nYou gained ${exp} exp`)
+        let exp = this.enemy.level * 2
+        this.hero.gold += this.enemy.gold
+        this.hero.experience += exp
+        alert(`You defeated ${this.enemy.name} \nYou found ${this.enemy.gold} gold!\nYou gained ${exp} exp`)
         this.changeGameState.emit(1)
       }, 500)
-    } else {    
-      this.enemyAttack()
-      this.disableAttackButton = false
     }
-  }
-  
-  enemyAttack() {
-    let attackPower = 1
-    let hero = this.hero
-    
-    let isDead = this.heroService.takeDamage(attackPower)
-    if (isDead) {
+    if (this.battleService.enemyAttack()) {
+      this.battleService.toggleBattle()
       this.gameService.floor = 0
       this.changeGameState.emit(0)
     }
-  }
-  
-  useItem(index) {
-    let hero = this.hero
-    let item: Item = hero.inventory[index]
-    if (item.type == "melee") {
-      hero.health += item.power
-      if (hero.health > hero.maxHealth) {
-        hero.health = hero.maxHealth
-      }
-    }
-    hero.inventory.splice(index, 1)
+    setTimeout(() => {
+      this.disableAttackButton = false
+    }, 500)
   }
 
+  // todo fix rendering bugs
+  renderEnemyDamage(amt) {
+    this.damageDealt = amt
+    if (!this.showDamageDealt) {
+      this.showDamageDealt = true
+      setTimeout(() => {
+        this.showDamageDealt = false
+      }, 1000)
+    } else {
+      this.secondShowDamageDealt = true
+      setTimeout(() => {
+        this.secondShowDamageDealt = false
+      }, 1000)
+    }
+  }
 }

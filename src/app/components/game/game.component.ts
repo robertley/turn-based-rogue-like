@@ -34,6 +34,7 @@ export class GameComponent implements OnInit {
     this.itemService.createItemMap()
     this.heroService.createHero()
     this.eventService.createEventMap()
+    this.spellService.createSpellMap()
     this.floor = this.gameService.floor
   }
   

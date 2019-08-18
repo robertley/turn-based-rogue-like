@@ -1,3 +1,50 @@
 .enemy span {
     margin-right: 1em;
 }
+.health-container {
+    position: relative;
+}
+.damage {
+    position: absolute;
+    color: red;
+    top: 1em;
+    left: 54px;
+    animation: enemy-damage-animation 1s ease-out 1;
+    opacity: 1;
+}
+.damage2 {
+    position: absolute;
+    color: red;
+    top: 1em;
+    left: 54px;
+    animation: enemy-damage-animation-2 1s ease-out 1;
+    opacity: 1;
+}
+@keyframes enemy-damage-animation {
+  0% {
+      top: 1em;
+      opacity: 1;
+  }
+  50% {
+      top: 2em;
+      opacity: 1;
+  }
+  100% {
+      top: 2em;
+      opacity: 0;
+  }
+}
+@keyframes enemy-damage-animation-2 {
+  0% {
+      top: 1em;
+      opacity: 1;
+  }
+  50% {
+      top: 2em;
+      opacity: 1;
+  }
+  100% {
+      top: 2em;
+      opacity: 0;
+  }
+}

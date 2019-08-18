@@ -8,7 +8,7 @@
     "power": 2,
     "type": "melee",
     "rarity": -1
-  }
+    }
   },
   {
     "key": 1,
@@ -29,6 +29,7 @@
       "value": 2,
       "power": 5,
       "type": "consumable",
+      "subType": "health",
       "rarity": 1
     }
   }

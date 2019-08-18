@@ -1,8 +1,11 @@
 <div class="item-container">
-  <div (mouseover)="showInfoBox=true; calculateDamage()" (mouseout)="showInfoBox=false">
-    {{ item.name }} {{ hero.equippedWeapon === index ? "- Equipped" : ""}}
-    <span *ngIf="item.type == 0 && hero.equippedWeapon != index">- Equip</span>
-    <span *ngIf="item.type == 1" (click)="useItem(i)">- Use</span>
+  <div>
+    <span (mouseover)="showInfoBox=true; calculateDamage()" (mouseout)="showInfoBox=false">
+      {{ item.name }}
+    </span>
+    <span *ngIf="hero.equippedWeapon === index"> - Equipped</span>
+    <span *ngIf="(item.type == 'melee' || item.type == 'staff') && hero.equippedWeapon != index">- <span class="span-link" (click)="equipItem()">Equip</span></span>
+    <span *ngIf="item.type == 'consumable'">- <span class="span-link" (click)="useItem()">Use</span></span>
   </div>
   <div *ngIf="showInfoBox" class="item-info-box">
     <span class="bold">{{ item.name }}</span> <br>

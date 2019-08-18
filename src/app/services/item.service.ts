@@ -2,11 +2,24 @@ import {Injectable, OnInit} from '@angular/core'
 import { ItemsMap } from '../interfaces/items-map.interface';
 import * as _ from 'lodash'
 import * as itemsData from '../data/items.json'
+import { HeroService } from './hero.service';
+import { Hero } from '../interfaces/hero.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ItemService {
+export class ItemService implements OnInit {
+  
+  hero: Hero
+  
+  constructor() {
+    
+  }
+  
+
+  ngOnInit() {
+    // this.hero = this.heroService.hero
+  }
   
   // TODO items:
   // fortune cookie - see what type of monster is on the next floor (or event)
@@ -16,15 +29,9 @@ export class ItemService {
   allItems: ItemsMap[] = [];
   
   createItemMap() {
-    // this.allItems.push(
-      
-    // )
-    itemsData.default.forEach(item => {
+    itemsData.forEach(item => {
       this.allItems.push(item)
     });
-    
-    
-    
     
     
     // test items
@@ -94,4 +101,5 @@ export class ItemService {
   getItem(key) {
     return _.find(this.allItems, { key: key }).item
   }
+
 }

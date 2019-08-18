@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core'
-import { ItemsMap } from '../interfaces/items-map.interface';
 import * as _ from 'lodash'
-import { SpellMap } from '../interfaces/spell-map.interface';
-import * as evetData from '../data/events.json'
+import * as eventData from '../data/events.json'
+import { EventMap } from '../interfaces/event-map.interface';
+import { Event } from '../interfaces/event.interface.js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  allEvents: SpellMap[] = []
+  allEvents: Map<number, Event> = new Map()
   totalRarityNumber: number
 
   createEventMap() {
-    evetData.default.forEach(item => {
-      this.allEvents.push(item)
+    eventData.forEach(item => {
+      this.allEvents.set(item.key, item.event)
       this.totalRarityNumber += item.event.rarity
     })
     console.log("all events", this.allEvents)
   }
 
-  getEvent(key) {
-    return _.find(this.allEvents, { key: key }).event
-  }
+  // getEvent(key) {
+  //   return _.find(this.allEvents, { key: key }).event
+  // }
 }

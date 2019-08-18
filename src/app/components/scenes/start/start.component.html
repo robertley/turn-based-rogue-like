@@ -19,6 +19,7 @@
       <span>Intelligence: {{hero.stats.intelligence}}</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(4)">+</button><br>
       <span>Charisma: {{hero.stats.charisma}}</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(5)">+</button><br>
       <span>Luck: {{hero.stats.luck}}</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(6)">+</button><br>
+      <span>Luck: {{hero.stats.luck}}</span> <button *ngIf="addStatLeft > 0" (click)="decreaseStat(6)">-</button><br>
       <span>+{{addGoldAmt}} gold</span> <button *ngIf="addStatLeft > 0" (click)="increaseStat(7)">+</button><br>
     </div>
     <div class="col-6">
@@ -32,5 +33,7 @@
   </div>
   <div class="action-panel">
     <button class="btn btn-primary" (click)="begin()">Start</button>
+    <app-spell *ngFor="let spell of hero.spells" [spell]="spell" [scene]="0"></app-spell>
+    <!-- <button class="btn btn-primary" (click)="luckRoll()">luck roll</button> -->
   </div>
 </div>

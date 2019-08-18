@@ -6,7 +6,13 @@
       <span>{{hero.level}}</span>
       <span>Exp: {{hero.experience}}</span>
       <span>Gold: {{hero.gold}}</span>
-      <span>Health: {{hero.health}}/{{hero.maxHealth}}</span>
+      <span class="health-container">
+        <span>Health: {{hero.health}}/{{hero.maxHealth}}</span>
+        <span class="damage" *ngIf="showDamageDealt && !secondShowDamageDealt">{{ damageDealt }}</span>
+        <span class="damage2" *ngIf="showDamageDealt && secondShowDamageDealt">{{ damageDealt }}</span>
+        <!-- <span class="damage">{{ damageDealt }}</span>
+        <span class="damage2">{{ damageDealt }}</span> -->
+      </span>
       <span>Mana: {{hero.mana}}/{{hero.maxMana}}</span>
     </div>
   </div>

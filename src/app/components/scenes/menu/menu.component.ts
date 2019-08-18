@@ -13,9 +13,12 @@ export class MenuComponent implements OnInit {
 
   @Output() changeGameState: EventEmitter<number> = new EventEmitter()
   
+  hero: Hero
+  
   constructor(private gameService: GameService, private heroService: HeroService) { }
 
   ngOnInit() {
+    this.hero = this.heroService.hero
     console.log(this.heroService.hero)
   }
   

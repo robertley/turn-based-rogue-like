@@ -4,9 +4,8 @@ export interface Item {
     name: string;
     description?: string;
     value: number;
-    // minPower: number;
-    // maxPower: number;
     power: number;
     type: string;
+    subType?: string;
     rarity: number;
 }

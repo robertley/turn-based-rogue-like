@@ -4,7 +4,11 @@
       <div class="enemy ml-auto mr-auto">
         <span>{{enemy.name}}</span>
         <span>{{enemy.level}}</span>
-        <span>Health: {{enemy.health}}/{{enemy.maxHealth}}</span>
+        <span class="health-container">
+          <span>Health: {{enemy.health}}/{{enemy.maxHealth}}</span>
+          <span class="damage" *ngIf="showDamageDealt && !secondShowDamageDealt">{{ damageDealt }}</span>
+          <span class="damage2" *ngIf="showDamageDealt && secondShowDamageDealt">{{ damageDealt }}</span>
+        </span>
         <!-- <span>Mana: {{enemy.mana}}/{{enemy.maxMana}}</span> -->
       </div>
     </div>
@@ -13,6 +17,7 @@
     <div class="row">
       <div class="col-12">
         <button class="btn btn-primary" [disabled]="disableAttackButton" (click)="attack()">Attack</button>
+        <app-spell *ngFor="let spell of hero.spells" [spell]="spell" [scene]="2"></app-spell>
       </div>
     </div>
   </div>

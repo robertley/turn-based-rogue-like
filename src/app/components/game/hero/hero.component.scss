@@ -5,3 +5,50 @@ ul {
     padding-left: 0;
     list-style: none;
 }
+.health-container {
+    position: relative;
+}
+.damage {
+    position: absolute;
+    color: red;
+    bottom: -1em;
+    left: 54px;
+    animation: enemy-damage-animation 1s ease-out infinite;
+    opacity: 1;
+}
+.damage2 {
+    position: absolute;
+    color: red;
+    bottom: -1em;
+    left: 54px;
+    animation: enemy-damage-animation-2 1s ease-out infinite;
+    opacity: 1;
+}
+@keyframes enemy-damage-animation {
+  0% {
+      bottom: -1em;
+      opacity: 1;
+  }
+  50% {
+      bottom: -2em;
+      opacity: 1;
+  }
+  100% {
+      bottom: -2em;
+      opacity: 0;
+  }
+}
+@keyframes enemy-damage-animation-2 {
+  0% {
+      bottom: -1em;
+      opacity: 1;
+  }
+  50% {
+      bottom: -2em;
+      opacity: 1;
+  }
+  100% {
+      bottom: -2em;
+      opacity: 0;
+  }
+}

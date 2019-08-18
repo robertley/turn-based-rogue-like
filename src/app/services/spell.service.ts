@@ -11,8 +11,8 @@ export class SpellService {
 
   allSpells: SpellMap[] = []
 
-  createItemMap() {
-    spellData.default.forEach(item => {
+  createSpellMap() {
+    spellData.forEach(item => {
       this.allSpells.push(item)
     })
   }

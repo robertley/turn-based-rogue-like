@@ -21,9 +21,9 @@ export class EventComponent implements OnInit {
   constructor(private eventService: EventService, private heroService: HeroService, private gameService: GameService) { }
 
   ngOnInit() {
-    let eventNumber = Math.floor(Math.random() * this.eventService.allEvents.length)
+    let eventNumber = Math.floor(Math.random() * this.eventService.allEvents.size)
     eventNumber = eventNumber + 1000 // for test objects
-    this.event = this.eventService.getEvent(eventNumber)
+    this.event = this.eventService.allEvents.get(eventNumber)
     this.hero = this.heroService.hero
   }
   

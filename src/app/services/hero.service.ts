@@ -3,16 +3,17 @@ import { ItemsMap } from '../interfaces/items-map.interface';
 import { Hero } from '../interfaces/hero.interface';
 import { ItemService } from './item.service';
 import * as _ from "lodash"
+import { BattleService } from './battle.service';
+import { Subscription } from 'rxjs';
 
 @Injectable({
 providedIn: 'root'
 })
 export class HeroService {
   
-  hero: Hero;
+  hero: Hero
   
   constructor(private itemService: ItemService) {
-    
   }
 
   createHero() {
@@ -26,6 +27,7 @@ export class HeroService {
       mana: 10,
       maxMana: 10,
       inventory: [this.itemService.getItem(0), this.itemService.getItem(1)],
+      spells: [],
       equippedWeapon: 0,
       gold: 0,
       stats: null
@@ -94,6 +96,12 @@ export class HeroService {
     }
   }
   
+  decrementStat(stat) {
+    if (stat == 6) {
+      this.hero.stats.luck--
+    }
+  }
+  
   calcAttributes() {
     this.hero.health = this.hero.stats.vitality * 4
     this.hero.maxHealth = this.hero.stats.vitality * 4
@@ -122,6 +130,10 @@ export class HeroService {
     }
     return false
   }
+  
+  healHero(amt) {
+    this.hero.health = Math.min(this.hero.health += amt, this.hero.maxHealth)
+  }
 
   resetHero() {
     let hero = this.hero
@@ -139,5 +151,37 @@ export class HeroService {
 
   deadReset() {
     this.resetHero()
+  }
+  
+  consumeItem(itemIndex) {
+    this.hero.inventory.splice(itemIndex, 1);
+    if (itemIndex < this.hero.equippedWeapon) {
+      this.hero.equippedWeapon--
+    }
+  }
+  
+  equipItem(itemIndex) {
+    this.hero.equippedWeapon = itemIndex
+  }
+  
+  luckRoll() {
+    let roll = Math.min((Math.floor(Math.random() * 20) + this.hero.stats.luck) / 20, 1)
+    if (roll < 0) {
+      return 0
+    }
+    return roll
+  }
+  
+  calculateDamage(item) {
+    if (item.type == "melee") {
+      let weaponDmgMin = item.power / 2
+      let weaponDmgMax = item.power * 2
+      let weaponSkillmin = item.power / 3
+
+      let minDamage = Math.min(weaponDmgMin * (this.hero.stats.strength / weaponSkillmin), weaponDmgMax)
+      let maxDamage = Math.ceil(minDamage * 1.25)
+
+      return ({ "mindamage": minDamage, "maxdamage": maxDamage })
+    }
   }
 }
